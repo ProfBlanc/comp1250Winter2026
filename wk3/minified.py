@@ -1,0 +1,1 @@
+name = input("Enter you first and last name separated by a space: ");print("Great" if " " in name else "Not great")
