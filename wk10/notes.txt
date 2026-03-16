@@ -1,0 +1,115 @@
+Regular Expressions
+aka RegEx
+
+-advanced searching. instead of searching to determine
+if a substring exists within a string, can search
+based on a plethera of conditions
+
+-is its own language with its own syntax, however,
+the execution of regex in programming language differs
+
+-reserved characters by category
+
+Positioning
+
+^       start of text
+$       end of text
+text    hello world
+to search if texts STARTS WITH hello
+    regex: '^hello' => true
+to search if texts ENDS WITH hello
+    regex: 'world$' => true
+
+Grouping
+[]      any chars within brackets
+    [ben]   match all b, e, n in a text
+    [a-m] match all letters from a, b, c ....m
+    [a-e0-4] match a,b,c,d,e,0,1,2,3,4
+
+[^]    any chars BUT with brackets
+    [^ben]  match all chars except b, e, n
+    [^a-m] all but a, b....m
+    [^a-e0-4] all but a,b,c,d,e,0,1,2,3,4 chars
+
+|       either or for words or series of chars
+    cat|dog     search for entire string of cat or dog
+    morning|afternoon|evening search for any text matching words morning, afternoon, evening
+
+Repetition
+*           repeating a character 0 or many times
+?           repeating a character 0 or 1 time
++           repeating a character 1 or many times
+{N}         repeating a character exactly N times
+{N,}         repeating a character at least N times
+{N, M}         repeating a character betwee N & M times (inclusively)
+
+regex   be*n
+        search for word that begin with b, optional 0 or many e, end in n
+would match following text
+        bn, ben, been, beeeeeeeen
+
+regex be+n
+would match following text
+         ben, been, beeeeeeeen
+
+regex be?n
+would match following text
+         bn, ben
+
+regex be{2}n
+would match following text
+         been
+
+regex be{2,}n
+would match following text
+         been, beeeeeeeen, beeen, beeeeeeeeeeeeeeeeen
+
+
+regex be{2,5}n
+would match following text
+         been, beeeeen, beeen
+
+
+would does this regex do
+
+regex   b[ea]?n
+would it match the following words/text
+        bn: yes
+        ben: yes
+        ban: yes
+
+regex   b[ea]+n
+would it match the following words/text
+    ben: yes
+    ban: yes
+    been: yes
+    bean: yes
+    beeeeeeeeeeeeaaaaaaaaaaaan: yes
+    baaaaaaaaeeeeeeeen: yes
+
+Dot Character:
+    match any character
+    used as a placeholder
+examples
+    b.+!?
+    word or series of text
+    b, has any character 1 or many times, optionally has exlaimation
+
+    would it match
+        b: yes
+        b!: yes
+        ben: yes
+        bean: yes
+        bafaksdfadf@$#@%#$~#rTADSVADSCTH: yes
+        ben!: yes
+
+Shortcut and escaping
+
+\d          shortcut for digit, mapping to regex [0-9]
+\D          shortcut for digit, mapping  regex [^0-9]
+\s          shortcut whitespace digit, mapping to regex [\n\t\rn\v]
+\S          non-whitespace
+\w          shortcut for word, mapping to regex [a-zA-Z0-9_]
+\W          shortcut for non-word, mapping to regex [^a-zA-Z0-9]
+
+\           escape the meaning of char to litterally search for it.
